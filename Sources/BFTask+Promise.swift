@@ -10,12 +10,14 @@ extension Promise {
     public func then<U: AnyObject>(on q: DispatchQueue = conf.Q.map, body: @escaping (T) -> BFTask<U>) -> Promise<U?> {
         return then(on: q) { tee -> Promise<U?> in
             let task = body(tee)
-            return Promise<U?>(.pending) { seal in
+            return Promise<U?> { seal in
                 task.continue({ task in
                     if task.isCompleted {
                         seal.fulfill(task.result)
+                    } else if let error = task.error {
+                        seal.reject(error)
                     } else {
-                        seal.reject(task.error!)
+                        seal.reject(PMKError.invalidCallingConvention)
                     }
                     return nil
                 })

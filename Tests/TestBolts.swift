@@ -10,7 +10,7 @@ class TestBolts: XCTestCase {
         let value = { NSString(string: "1") }
 
         firstly { _ -> Promise<Void> in
-            return Promise(value: ())
+            return .value(Void())
         }.then { _ -> BFTask<NSString> in
             return BFTask(result: value())
         }.done { obj in
