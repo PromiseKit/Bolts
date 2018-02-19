@@ -9,11 +9,11 @@ env:
 cache:
   directories:
   - Carthage
+before_install:
+  - carthage bootstrap --cache-builds --no-use-binaries --platform $PLAT --verbose
 install:
-  - carthage bootstrap --cache-builds --no-use-binaries --platform $PLAT
-script:
-  - set -o pipefail
   - xcodebuild -scheme PMKBolts -quiet -destination "$DST" build
+script:
   - if [ "$PLAT" != "watchOS" ]; then
       xcodebuild -scheme PMKBolts -quiet -destination "$DST" test;
     fi
