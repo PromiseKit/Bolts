@@ -166,6 +166,7 @@
 			inputPaths = (
 				PromiseKit,
 				Bolts,
+				PMKCancel,
 			);
 			name = "Embed Carthage Frameworks";
 			outputPaths = (
