@@ -1,2 +1,4 @@
-github "mxcl/PromiseKit" ~> 6.0
+#github "mxcl/PromiseKit" ~> 6.0
+github "dougzilla32/PromiseKit" "CoreCancel"
+
 github "BoltsFramework/Bolts-ObjC" ~> 1.9
