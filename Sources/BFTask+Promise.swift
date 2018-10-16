@@ -34,8 +34,6 @@ extension BFCancellationTokenSource: CancellableTask {
     }
 }
 
-//////////////////////////////////////////////////////////// Cancellable wrapper
-
 extension CancellablePromise {
     /**
      The provided closure is executed when this cancellable promise is resolved.
